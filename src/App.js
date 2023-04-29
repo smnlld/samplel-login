@@ -20,7 +20,7 @@ const App = () => {
     <div className="bg-[#675D50] h-screen">
       {isLoggedIn ? (
         <div>
-          <p className="justify-center text-white items-center mb-10 relative flex text-4xl font-mono">Welcome, {userName}!</p>
+          <p className="justify-center text-white pt-[20%] items-center mb-10 relative flex text-4xl font-mono">Welcome, {userName}!</p>
         </div>
       ) : (
         <div>
