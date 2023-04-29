@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
-function App() {
+//components
+import Registration from "./components/Registration";
+import Login from "./components/Login";
+
+const App = () => {
+  const [userName, setUserName] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+
+  const handleRegistrationComplete = () => {
+    setIsRegistered(true);
+    setShowLogin(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-[#675D50] h-screen">
+      {isLoggedIn ? (
+        <div>
+          <p className="justify-center text-white items-center mb-10 relative flex text-4xl font-mono">Welcome, {userName}!</p>
+        </div>
+      ) : (
+        <div>
+          <Registration
+            handleRegistrationComplete={handleRegistrationComplete}
+          />
+          {isRegistered && showLogin && (
+            <Login setIsLoggedIn={setIsLoggedIn} setUserName={setUserName} />
+          )}
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default App;
